@@ -23,7 +23,7 @@ def upgrade():
     create table askdoc(
         id bigserial primary key,
         name text,
-        completed boolean not null default false
+        read boolean not null default false
     )
     """)
 
