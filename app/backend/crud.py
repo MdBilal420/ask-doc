@@ -8,13 +8,9 @@ def create_doc(db: Session, doc: schemas.DocRequest):
     db.refresh(db_doc)
     return db_doc
 
-def read_docs(db: Session, read: bool):
-    if read is None:
-        temp = db.query(models.Doc).all()
-        print("temp",temp)
-        return temp
-    else:
-        return db.query(models.Doc).filter(models.Doc.read == read).all()
+def read_docs(db: Session):
+    return db.query(models.Doc).all()
+    
 
 def read_doc(db: Session, id: int):
     return db.query(models.Doc).filter(models.Doc.id == id).first()
