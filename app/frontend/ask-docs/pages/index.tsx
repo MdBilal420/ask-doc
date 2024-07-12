@@ -1,0 +1,18 @@
+import Head from 'next/head'
+import Layout from '../components/layout';
+import DocsList from '../components/docs-list';
+
+export default function Home() {
+  return (
+    <div>
+      <Head>
+        <title>Ask Docs</title>
+        <meta name="description" content="Ask Docs" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Layout>
+        <DocsList />
+      </Layout>
+    </div>
+  )
+}

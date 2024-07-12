@@ -8,14 +8,24 @@ from fastapi.exceptions import RequestValidationError
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 
-
+origins = [
+    "http://localhost:3000",
+    "https://yourvercelname.vercel.app/",
+]
 app = FastAPI()
 
 from routers import docs
 app.include_router(docs.router)
 
 
-
+# CORS configuration, needed for frontend development
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 logging.basicConfig(level=logging.DEBUG)
 
 @app.exception_handler(RequestValidationError)
