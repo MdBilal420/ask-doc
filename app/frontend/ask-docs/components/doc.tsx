@@ -4,13 +4,27 @@ import styles from '../styles/todo.module.css'
 
 
 
-export default function Doc(props) {
-  const { todo, onChange, onDelete } = props;
+export default function Doc(props:any) {
+  const { doc, onChange, onDelete } = props;
   return (
-    <div className={styles.toDoRow} key={todo.id}>
-      <input className={styles.toDoCheckbox} name="completed" type="checkbox" checked={todo.completed} value={todo.completed} onChange={(e) => onChange(e, todo.id)}></input>
-      <input className={styles.todoInput} autoComplete='off' name="name" type="text" value={todo.name} onChange={(e) => onChange(e, todo.id)}></input>
-      <button className={styles.deleteBtn} onClick={() => onDelete(todo.id)}><Image src="/delete-outline.svg" width="24" height="24" /></button>
-    </div>
+    <tr key={doc.id}>
+       <td className="py-2 px-4 border-b text-center">
+                <input
+                  type="checkbox"
+                  name="read"
+                  checked={doc.read}
+                  onChange={(e) => onChange(e, doc.id)}
+                />
+              </td>
+      <td className="py-2 px-4 border-b">
+      <input name="name" type="text"  value={doc.name} onChange={(e)=>onChange(e,doc.id)} 
+        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" />
+
+      </td>
+                   
+              <td className="py-2 px-4 border-b text-center">
+              <button className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-red-900 shadow-sm ring-1 ring-inset ring-red-300 hover:ring-red-400" onClick={() => onDelete(doc.id)}>Remove</button>
+              </td>
+            </tr>
   )
 }
