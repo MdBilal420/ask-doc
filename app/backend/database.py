@@ -16,6 +16,10 @@ db_name = os.environ.get('DATABASE_NAME')
 
 SQLALCHEMY_DATABASE_URL = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
 
+
+if not SQLALCHEMY_DATABASE_URL:
+    raise ValueError("No DATABASE_URL set for the database connection")
+
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL
 )

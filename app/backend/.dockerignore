@@ -1,0 +1,32 @@
+# Exclude Python bytecode files
+__pycache__
+*.pyc
+
+# Exclude virtual environments
+venv
+env
+.venv
+
+# Exclude test and development files
+tests
+*.md
+.git
+.gitignore
+.dockerignore
+
+# Exclude IDE and editor settings
+.vscode
+.idea
+*.swp
+
+# Exclude build artifacts
+build/
+dist/
+*.egg-info
+
+# Exclude node_modules if you're using Node.js for frontend assets
+node_modules
+npm-debug.log
+
+# Exclude environment variable files
+.env
