@@ -16,6 +16,8 @@ origins = [
 app = FastAPI()
 
 from routers import docs
+from routers import todos
+app.include_router(todos.router)
 app.include_router(docs.router)
 
 
