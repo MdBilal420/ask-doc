@@ -21,5 +21,9 @@ class PDFResponse(BaseModel):
     selected: bool
     file: str
 
+#For PDF QA    
+class QuestionRequest(BaseModel):
+    question: str
+
     class Config:
         from_attributes = True
