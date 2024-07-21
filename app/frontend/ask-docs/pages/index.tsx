@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Layout from '../components/layout';
 import DocsList from '../components/docs-list';
+import PdfList from '../components/pdfs/pdfs-list';
 
 export default function Home() {
   return (
@@ -11,7 +12,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <DocsList />
+        {/* <DocsList /> */}
+        <PdfList />
       </Layout>
     </div>
   )
