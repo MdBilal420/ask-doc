@@ -3,9 +3,14 @@ import { useState, useEffect, useCallback, useRef, SetStateAction } from 'react'
 import { debounce } from 'lodash';
 import PDFComponent from './pdf';
 
-export default function PdfList() {
-  const [pdfs, setPdfs] = useState<any>([]);
+interface PDFListProps{
+  pdfs: any
+  setPdfs : any
+}
+
+export default function PdfList({pdfs,setPdfs}:PDFListProps) {
   const [selectedFile, setSelectedFile] = useState(null);
+  
   const [filter, setFilter] = useState<any>();
   const didFetchRef = useRef(false);
 
@@ -44,8 +49,6 @@ export default function PdfList() {
 
   async function updatePdf(pdf: { [x: string]: any; id: any; }, fieldChanged: string | number) {
     const data = { [fieldChanged]: pdf[fieldChanged],name:pdf.name,file:pdf.file };
-
-    console.log(pdf,data)
 
     await fetch(process.env.NEXT_PUBLIC_API_URL + `/pdfs/${pdf.id}`, {
       method: 'PUT',
@@ -99,11 +102,11 @@ export default function PdfList() {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.mainInputContainer}>
+    <div className="w-lg mx-auto mt-10 p-6">
+      <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
         <form onSubmit={handleUpload}>
-          <input className={styles.mainInput} type="file" accept=".pdf" onChange={handleFileChange} />
-          <button className={styles.loadBtn} type="submit">Load PDF</button>
+          <input  type="file" accept=".pdf" onChange={handleFileChange} />
+          <button  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded cursor-pointer" type="submit">Load PDF</button>
         </form>
       </div>
       {!pdfs.length && <div>Loading...</div>}

@@ -2,8 +2,12 @@ import Head from 'next/head'
 import Layout from '../components/layout';
 import DocsList from '../components/docs-list';
 import PdfList from '../components/pdfs/pdfs-list';
+import { useState } from 'react';
+import AskDocs from '@/components/ask-docs';
 
 export default function Home() {
+
+  
   return (
     <div>
       <Head>
@@ -13,7 +17,7 @@ export default function Home() {
       </Head>
       <Layout>
         {/* <DocsList /> */}
-        <PdfList />
+        <AskDocs />
       </Layout>
     </div>
   )
